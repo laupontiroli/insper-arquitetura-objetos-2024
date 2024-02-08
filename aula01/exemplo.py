@@ -6,23 +6,10 @@ print(var1)
 
 if var1 > 10:
     print("maior que 10")
+elif var1 > 5:
+    print("maior que 5")
 else:
-    print("menor que 10")
-
-def func(var1):
-    if var1 > 10:
-        print("maior que 10")
-    else:
-        print("menor que 10")
-
-
-def func(var1):
-    if var1 > 10:
-        print("maior que 10")
-    else:
-        print("menor que 10")
-
-func(100)
+    print("menor que 5")
 
 var1 = [1, 2, 3, 4, 5]
 for num in var1:
@@ -45,15 +32,20 @@ var1 = {'a': 1, 'b': 2}
 print(var1)
 
 
-class Person:
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
+class Filme:
+  def __init__(self, nome, ano):
+    self.nome = nome
+    self.ano = ano
+    self.atores = []
 
   def get_nome(self):
-    print("Hello my name is " + self.name)
+    print(self.name)
 
-p1 = Person("John", 36)
+  def adiciona_ator(self, ator):
+    print(ator)
 
-print(p1.name)
-print(p1.age)
+filme = Filme("Teste", 2023)
+filme.adiciona_ator("ator-1")
+filme.adiciona_ator("ator-2")
+
+print(filme.nome)
