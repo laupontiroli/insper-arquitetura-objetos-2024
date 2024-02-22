@@ -6,11 +6,23 @@ import java.util.ArrayList;
 
 public class Filme {
 
-    String nome;
-    Integer ano;
-    ArrayList<String> atores = new ArrayList<>();
+    private String nome;
+    private Integer ano;
+    private ArrayList<String> atores = new ArrayList<>();
 
-    Boolean adicionaAtor(String nome) {
+    public Filme() {
+    }
+
+    public Filme(String nome) {
+        this.nome = nome;
+    }
+
+    public Filme(String nome, Integer ano) {
+        this.nome = nome;
+        this.ano = ano;
+    }
+
+    public Boolean adicionaAtor(String nome) {
         if (nome != null) {
             atores.add(nome);
             return true;
@@ -18,15 +30,25 @@ public class Filme {
         return false;
     }
 
-    void calculoAnosLancamento() {
+    public void calculoAnosLancamento() {
         Integer anoAtual = LocalDate.now().getYear();
         System.out.println(anoAtual - this.ano);
     }
 
-    Integer calculoAnosLancamentoReturn() {
+    public Integer calculoAnosLancamentoReturn() {
         Integer anoAtual = LocalDate.now().getYear();
         return anoAtual - this.ano;
     }
 
+    public Integer calculaAniversario() {
+        return 0;
+    }
 
+    public void limparListaAtores() {
+        this.atores.clear();
+    }
+
+    public String getNome() {
+        return nome;
+    }
 }
