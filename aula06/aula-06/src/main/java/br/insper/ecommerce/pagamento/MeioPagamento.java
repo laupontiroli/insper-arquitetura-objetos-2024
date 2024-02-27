@@ -1,11 +1,11 @@
-package org.example.pagamento;
+package br.insper.ecommerce.pagamento;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class MeioPagamento {
-    private Boolean aprovado;
-    private LocalDateTime dataAprovacao;
+public abstract class MeioPagamento {
+    protected Boolean aprovado;
+    protected LocalDateTime dataAprovacao;
 
     public MeioPagamento() {
     }

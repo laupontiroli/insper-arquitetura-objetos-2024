@@ -1,4 +1,4 @@
-package org.example.pagamento;
+package br.insper.ecommerce.pagamento;
 
 import java.time.LocalDateTime;
 
@@ -9,9 +9,10 @@ public class CartaoCredito extends MeioPagamento {
     public CartaoCredito() {
     }
 
-    public CartaoCredito(boolean aprovado, LocalDateTime dataAprovacao, String numeroCartao) {
+    public CartaoCredito(boolean aprovado, LocalDateTime dataAprovacao, String numeroCartao, String bandeira) {
         super(aprovado, dataAprovacao);
         this.numeroCartao = numeroCartao;
+        this.bandeira = bandeira;
     }
 
     public String getNumeroCartao() {

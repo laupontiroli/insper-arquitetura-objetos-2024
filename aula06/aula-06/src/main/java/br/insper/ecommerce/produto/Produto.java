@@ -1,4 +1,4 @@
-package org.example.produto;
+package br.insper.ecommerce.produto;
 
 public class Produto {
     private String nome;

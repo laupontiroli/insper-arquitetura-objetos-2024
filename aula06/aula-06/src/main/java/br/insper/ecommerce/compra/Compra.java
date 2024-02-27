@@ -1,6 +1,8 @@
-package org.example.compra;
+package br.insper.ecommerce.compra;
 
-import org.example.cliente.Cliente;
+import br.insper.ecommerce.cliente.Cliente;
+import br.insper.ecommerce.pagamento.MeioPagamento;
+import br.insper.ecommerce.pagamento.Pix;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,19 +15,23 @@ public class Compra {
 
     private ArrayList<Item> itens = new ArrayList<>();
 
+    private MeioPagamento meioPagamento;
+
     public Compra() {
     }
 
-    public Compra(LocalDateTime dataCompra, Double precoTotal, Cliente cliente) {
+    public Compra(LocalDateTime dataCompra, Double precoTotal, Cliente cliente, MeioPagamento meioPagamento) {
         this.dataCompra = dataCompra;
         this.precoTotal = precoTotal;
         this.cliente = cliente;
+        this.meioPagamento = meioPagamento;
     }
 
     public void calculaPrecoTotal() {
         Double total = 0D;
         for (Item item : itens) {
-            total = total + item.getQuantidade() * item.getProduto().getPreco();
+            total = total + item.getQuantidade()
+                    * item.getProduto().getPreco();
         }
         this.precoTotal =  total;
     }
@@ -48,6 +54,18 @@ public class Compra {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public void adicionarItem(Item item)  {
+        this.itens.add(item);
+    }
+
+    public MeioPagamento getMeioPagamento() {
+        return meioPagamento;
+    }
+
+    public void setMeioPagamento(MeioPagamento meioPagamento) {
+        this.meioPagamento = meioPagamento;
     }
 
 }

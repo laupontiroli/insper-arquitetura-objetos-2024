@@ -1,4 +1,4 @@
-package org.example.cliente;
+package br.insper.ecommerce.cliente;
 
 import java.time.LocalDate;
 

@@ -1,6 +1,6 @@
-package org.example.compra;
+package br.insper.ecommerce.compra;
 
-import org.example.produto.Produto;
+import br.insper.ecommerce.produto.Produto;
 
 public class Item {
     private Integer quantidade;
