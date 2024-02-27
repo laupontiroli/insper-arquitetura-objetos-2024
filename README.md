@@ -6,4 +6,8 @@
 
 15/02 - Aula 03 - Exercícios
 
-20/02 - Aula 04 - Programação Orientada a Objetos
+20/02 - Aula 04 - Programação Orientada a Objetos - Classes e Objetos
+
+22/02 - Aula 05 - Programação Orientada a Objetos - Relacionamento entre classes
+
+27/02 - Aula 06 - Classes de Serviço
