@@ -10,4 +10,6 @@
 
 22/02 - Aula 05 - Programação Orientada a Objetos - Relacionamento entre classes
 
-27/02 - Aula 06 - Classes de Serviço
+27/02 - Aula 06 - Programação Orientada a Objetos - Herança
+
+29/02 - Aula 06 - Classes de Serviço
