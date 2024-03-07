@@ -1,5 +1,6 @@
 package br.insper.loja.cliente;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -8,48 +9,27 @@ import java.util.ArrayList;
 @RestController
 public class ClienteController {
 
-    private ArrayList<Cliente> clientes = new ArrayList<>();
+    @Autowired
+    private ClienteService clienteService;
 
     @GetMapping("/cliente")
     public ArrayList<Cliente> getClientes(@RequestParam(required = false) String nome) {
-        if (nome != null) {
-            ArrayList<Cliente> lista = new ArrayList<>();
-            for (Cliente cliente : clientes) {
-                if (cliente.getNome().startsWith(nome)) {
-                    lista.add(cliente);
-                }
-            }
-            return lista;
-        }
-        return clientes;
+        return clienteService.listarClientes(nome);
     }
 
     @GetMapping("/cliente/{cpf}")
     public Cliente getCliente(@PathVariable String cpf) {
-        for (Cliente cliente : clientes) {
-            if (cliente.getCpf().equals(cpf)) {
-                return cliente;
-            }
-        }
-        return null;
+        return clienteService.getCliente(cpf);
     }
 
     @PostMapping("/cliente")
     public void salvarCliente(@RequestBody Cliente cliente) {
-        clientes.add(cliente);
+        clienteService.cadastrarCliente(cliente);
     }
 
     @DeleteMapping("/cliente/{cpf}")
     public void delete(@PathVariable String cpf) {
-        Cliente clienteRemover = null;
-        for (Cliente cliente : clientes) {
-            if (cliente.getCpf().equals(cpf)) {
-                clienteRemover = cliente;
-            }
-        }
-        if (clienteRemover != null) {
-            clientes.remove(clienteRemover);
-        }
+        clienteService.excluirClientes(cpf);
     }
 
 }
