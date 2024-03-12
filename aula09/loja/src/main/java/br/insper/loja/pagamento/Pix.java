@@ -14,10 +14,6 @@ public class Pix extends MeioPagamento {
         super(aprovado, dataAprovacao);
         this.chaveOrigem = chaveOrigem;
         this.qrCode = qrCode;
-
-        Boleto boleto = new Boleto();
-        boleto.codigoBarra = "";
-
     }
 
     public String getChaveOrigem() {
