@@ -13,7 +13,7 @@ public class ClienteService {
 
         if (cliente.getNome().equals("")
                 || cliente.getCpf().equals("")) {
-            return null;
+            throw  new RuntimeException("Dados invalidos");
         } else {
             clientes.add(cliente);
             return cliente;

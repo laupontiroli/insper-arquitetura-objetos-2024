@@ -1,10 +1,8 @@
 package br.insper.loja.compra;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -20,6 +18,7 @@ public class CompraController {
     }
 
     @PostMapping("/compra")
+    @ResponseStatus(HttpStatus.CREATED)
     public Compra salvarCompra(@RequestBody Compra compra) {
         return compraService.cadastrarCompra(compra);
     }

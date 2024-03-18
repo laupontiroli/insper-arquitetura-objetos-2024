@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Compra {
 
+    private String identificador;
     private LocalDateTime dataCompra;
     private Double precoTotal;
     private Cliente cliente;
@@ -54,5 +55,13 @@ public class Compra {
 
     public void setMeioPagamento(MeioPagamento meioPagamento) {
         this.meioPagamento = meioPagamento;
+    }
+
+    public String getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(String identificador) {
+        this.identificador = identificador;
     }
 }

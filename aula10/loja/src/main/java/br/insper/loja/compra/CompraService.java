@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.UUID;
 
 @Service
 public class CompraService {
@@ -23,21 +24,23 @@ public class CompraService {
 
     public Compra cadastrarCompra(Compra compra) {
 
+
         Cliente cliente = clienteService.getCliente(compra.getCliente().getCpf());
         if (cliente == null) {
             throw new RuntimeException("Cliente nao encontrado");
         }
+        compra.setIdentificador(UUID.randomUUID().toString());
+        compra.setCliente(cliente);
 
         for (Item item : compra.getItens()) {
             Produto produto = produtoService.getProduto(item.getProduto().getNome());
             if (produto == null) {
-                throw new RuntimeException("Produt nao encontrado");
+                throw new RuntimeException("Produto nao encontrado");
             }
             item.setProduto(produto);
         }
 
         compra.getMeioPagamento().setDataAprovacao(LocalDateTime.now());
-        compra.setCliente(cliente);
         compras.add(compra);
 
         return compra;
