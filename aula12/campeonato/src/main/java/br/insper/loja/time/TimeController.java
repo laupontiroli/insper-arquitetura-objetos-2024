@@ -22,7 +22,7 @@ public class TimeController {
     }
 
     @GetMapping("/time/{identificador}")
-    public Time getTime(@PathVariable String identificador) {
+    public Time getTime(@PathVariable Integer identificador) {
         return timeService.getTime(identificador);
     }
 

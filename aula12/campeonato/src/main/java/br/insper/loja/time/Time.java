@@ -1,8 +1,15 @@
 package br.insper.loja.time;
 
-public class Time {
+import jakarta.persistence.*;
 
+@Entity
+public class Time {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(nullable = false)
     private String nome;
+    @Column(unique = true)
     private String identificador;
     private String estadio;
     private String estado;
@@ -15,6 +22,14 @@ public class Time {
         this.identificador = identificador;
         this.estadio = estadio;
         this.estado = estado;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

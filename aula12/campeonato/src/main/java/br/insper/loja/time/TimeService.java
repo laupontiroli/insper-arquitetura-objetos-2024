@@ -1,44 +1,35 @@
 package br.insper.loja.time;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TimeService {
 
-    private ArrayList<Time> times = new ArrayList<>();
+    @Autowired
+    private TimeRepository timeRepository;
 
     public Time cadastrarTime(Time time) {
         if (time.getNome().equals("")
                 || time.getIdentificador().equals("")) {
             throw  new RuntimeException("Dados invalidos");
         } else {
-            times.add(time);
-            return time;
+            return timeRepository.save(time);
         }
     }
 
-    public ArrayList<Time> listarTimes(String estado) {
+    public List<Time> listarTimes(String estado) {
         if (estado != null) {
-            ArrayList<Time> lista = new ArrayList<>();
-            for (Time time : times) {
-                if (time.getEstado().equals(estado)) {
-                    lista.add(time);
-                }
-            }
-            return lista;
+            return timeRepository.findByEstado(estado);
         }
-        return times;
+        return timeRepository.findAll();
     }
 
-    public Time getTime(String identificador) {
-        for (Time time : times) {
-            if (time.getIdentificador().equals(identificador)) {
-                return time;
-            }
-        }
-        return null;
+    public Time getTime(Integer id) {
+        return timeRepository.getById(id);
     }
 
 }

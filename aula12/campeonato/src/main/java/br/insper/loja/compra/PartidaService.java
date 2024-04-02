@@ -22,8 +22,8 @@ public class PartidaService {
 
     public Partida cadastrarPartida(Partida partida) {
 
-        Time mandante = timeService.getTime(partida.getMandante().getIdentificador());
-        Time visitante = timeService.getTime(partida.getMandante().getIdentificador());
+        Time mandante = timeService.getTime(partida.getMandante().getId());
+        Time visitante = timeService.getTime(partida.getMandante().getId());
 
         if (mandante == null ||  visitante == null) {
             throw new RuntimeException("Time na encotrado");
