@@ -13,6 +13,8 @@ public class Compra {
     private Double precoTotal;
     private Cliente cliente;
 
+    private Time timeMandante;
+
     private ArrayList<Item> itens = new ArrayList<>();
 
     private MeioPagamento meioPagamento;

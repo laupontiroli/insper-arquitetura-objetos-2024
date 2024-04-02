@@ -25,6 +25,32 @@ public class CompraService {
     public Compra cadastrarCompra(Compra compra) {
 
 
+        {
+            "timeMandante": {
+                "id": "1"
+            },
+
+            "timeVisitante": {
+                "id": "2"
+            },
+        }
+
+        String idMandante = partida.getTimeMandante().getId();
+        String idVisitante = partida.getTimeVisitante().getId();
+
+        Time timeMandante = timeService.getTime(idMandante);
+        Time timeVisitante = timeService.getTime(idVisitante);
+
+        if (timeMandante == null) {
+            throw new RuntimeException("Time nao encontrado");
+        }
+
+
+        ArrayList<Integer> teste = new ArrayList<>();
+
+
+        int[] array = teste.toArray(new Integer[0]);
+
         Cliente cliente = clienteService.getCliente(compra.getCliente().getCpf());
         if (cliente == null) {
             throw new RuntimeException("Cliente nao encontrado");

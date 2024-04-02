@@ -3,6 +3,8 @@ package br.insper.loja.cliente;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeMap;
 
 @Service
 public class ClienteService {
@@ -10,6 +12,7 @@ public class ClienteService {
     private ArrayList<Cliente> clientes = new ArrayList<>();
 
     public Cliente cadastrarCliente(Cliente cliente) {
+
 
         if (cliente.getNome().equals("")
                 || cliente.getCpf().equals("")) {
