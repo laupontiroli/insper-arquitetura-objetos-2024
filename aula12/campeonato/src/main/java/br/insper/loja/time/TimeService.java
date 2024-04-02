@@ -33,15 +33,11 @@ public class TimeService {
     }
 
     public Time getTime(String identificador) {
-        for (Time cliente : times) {
-            if (cliente.getIdentificador().equals(identificador)) {
-                return cliente;
+        for (Time time : times) {
+            if (time.getIdentificador().equals(identificador)) {
+                return time;
             }
         }
-        return null;
-    }
-
-    public Integer getTimeVitorias(String identificador) {
         return null;
     }
 

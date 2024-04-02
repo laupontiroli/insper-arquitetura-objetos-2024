@@ -29,7 +29,7 @@ public class TimeController {
 
     @GetMapping("/time/{identificador}/vitorias")
     public Integer getVitorias(@PathVariable String identificador) {
-        return timeService.getTimeVitorias(identificador);
+        return partidaService.contaVitorias(identificador);
     }
 
     @PostMapping("/time")

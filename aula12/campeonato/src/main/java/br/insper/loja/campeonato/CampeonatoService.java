@@ -35,7 +35,7 @@ public class CampeonatoService {
 
     public Campeonato getCampeonato(String identificador) {
         for (Campeonato campeonato : campeonatos) {
-            if (campeonato.getNome().equals(identificador)) {
+            if (campeonato.getIdentificador().equals(identificador)) {
                 return campeonato;
             }
         }
