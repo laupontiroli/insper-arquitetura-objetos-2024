@@ -1,4 +1,4 @@
-package br.insper.loja.teste;
+package br.insper.loja.veiculos;
 
 public interface Veiculo {
 

@@ -1,6 +1,4 @@
-package br.insper.loja.teste;
-
-import org.apache.commons.lang3.NotImplementedException;
+package br.insper.loja.veiculos;
 
 public class Carro implements Veiculo {
 
