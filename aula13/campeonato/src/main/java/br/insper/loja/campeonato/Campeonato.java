@@ -1,6 +1,14 @@
 package br.insper.loja.campeonato;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Campeonato {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(nullable = false, name = "nome_campeonato")
     private String nome;
     private String identificador;
 
@@ -10,6 +18,14 @@ public class Campeonato {
     public Campeonato(String nome, String identificador) {
         this.nome = nome;
         this.identificador = identificador;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

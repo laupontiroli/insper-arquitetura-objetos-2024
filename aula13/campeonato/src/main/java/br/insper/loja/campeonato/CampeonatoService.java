@@ -1,24 +1,27 @@
 package br.insper.loja.campeonato;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CampeonatoService {
 
-    private ArrayList<Campeonato> campeonatos = new ArrayList<>();
+    @Autowired
+    private CampeonatoRepository campeonatoRepository;
 
     public Campeonato cadastrarCampeonato(Campeonato campeonato) {
         if (campeonato.getNome().equals("")) {
             return null;
         } else {
-            campeonatos.add(campeonato);
-            return campeonato;
+            return campeonatoRepository.save(campeonato);
         }
     }
 
-    public ArrayList<Campeonato> listarCampeonatos(String nome) {
+    public List<Campeonato> listarCampeonatos(String nome) {
+        List<Campeonato> campeonatos = campeonatoRepository.findAll();
         if (nome != null) {
             ArrayList<Campeonato> lista = new ArrayList<>();
             for (Campeonato campeonato : campeonatos) {
@@ -31,13 +34,8 @@ public class CampeonatoService {
         return campeonatos;
     }
 
-    public Campeonato getCampeonato(String identificador) {
-        for (Campeonato campeonato : campeonatos) {
-            if (campeonato.getIdentificador().equals(identificador)) {
-                return campeonato;
-            }
-        }
-        return null;
+    public Campeonato getCampeonato(Integer id) {
+        return campeonatoRepository.getById(id);
     }
 
 }

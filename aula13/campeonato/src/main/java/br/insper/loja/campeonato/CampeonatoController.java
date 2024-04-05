@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class CampeonatoController {
@@ -18,12 +19,12 @@ public class CampeonatoController {
     private PartidaService partidaService;
 
     @GetMapping("/campeonato")
-    public ArrayList<Campeonato> getCampeonatos(@RequestParam(required = false) String nome) {
+    public List<Campeonato> getCampeonatos(@RequestParam(required = false) String nome) {
         return campeonatoService.listarCampeonatos(nome);
     }
 
     @GetMapping("/campeonato/{identificador}")
-    public Campeonato getCampeonato(@PathVariable String identificador) {
+    public Campeonato getCampeonato(@PathVariable Integer identificador) {
         return campeonatoService.getCampeonato(identificador);
     }
 

@@ -2,15 +2,35 @@ package br.insper.loja.partida;
 
 import br.insper.loja.campeonato.Campeonato;
 import br.insper.loja.time.Time;
+import jakarta.persistence.*;
 
+@Entity
 public class Partida {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String identificador;
+
+    @ManyToOne
+    @JoinColumn(name = "id_mandante")
     private Time mandante;
+    @ManyToOne
+    @JoinColumn(name = "id_visitante")
     private Time visitante;
     private Integer placarMandante;
     private Integer placarVisitante;
+    @ManyToOne
+    @JoinColumn(name = "id_campeonato")
     private Campeonato campeonato;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getIdentificador() {
         return identificador;

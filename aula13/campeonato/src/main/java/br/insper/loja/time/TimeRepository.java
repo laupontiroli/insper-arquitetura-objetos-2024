@@ -10,4 +10,7 @@ public interface TimeRepository extends JpaRepository<Time, Integer> {
 
     public List<Time> findByEstado(String estado);
 
+    public Time getByEstadio(String estadio);
+
+
 }

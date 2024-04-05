@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class PartidaController {
@@ -13,7 +14,7 @@ public class PartidaController {
     private PartidaService partidaService;
 
     @GetMapping("/partida")
-    public ArrayList<Partida> getPartida(@RequestParam(required = false) String mandante) {
+    public List<Partida> getPartida(@RequestParam(required = false) String mandante) {
         return partidaService.listarPartidas(mandante);
     }
 

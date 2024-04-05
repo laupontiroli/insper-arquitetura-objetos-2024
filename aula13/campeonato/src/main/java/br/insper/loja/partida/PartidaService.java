@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PartidaService {
 
-    private ArrayList<Partida> partidas = new ArrayList<>();
+    @Autowired
+    private PartidaRepository partidaRepository;
 
     @Autowired
     private TimeService timeService;
@@ -29,18 +31,18 @@ public class PartidaService {
             throw new RuntimeException("Time na encotrado");
         }
 
-        Campeonato campeonato =  campeonatoService.getCampeonato(partida.getCampeonato().getIdentificador());
+        Campeonato campeonato =  campeonatoService.getCampeonato(partida.getCampeonato().getId());
 
         if (campeonato == null) {
             throw new RuntimeException("Campeonato na encotrado");
         }
 
-        partidas.add(partida);
-        return partida;
+        return partidaRepository.save(partida);
 
     }
 
-    public ArrayList<Partida> listarPartidas(String mandante) {
+    public List<Partida> listarPartidas(String mandante) {
+        List<Partida> partidas = partidaRepository.findAll();
         if  (mandante != null) {
             ArrayList<Partida> lista = new ArrayList<>();
             for (Partida partida  : partidas) {
@@ -54,6 +56,8 @@ public class PartidaService {
     }
 
     public ArrayList<Partida> listarPartidasCampeonato(String campeonato) {
+
+        List<Partida> partidas = partidaRepository.findAll();
         ArrayList<Partida> lista = new ArrayList<>();
         for (Partida partida  : partidas) {
             if (partida.getCampeonato().getIdentificador().equals(campeonato))  {
@@ -64,6 +68,8 @@ public class PartidaService {
     }
 
     public Integer contaVitorias(String time) {
+
+        List<Partida> partidas = partidaRepository.findAll();
         Integer total = 0;
 
         for (Partida partida : partidas) {
