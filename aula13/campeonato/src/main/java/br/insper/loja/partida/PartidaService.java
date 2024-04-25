@@ -22,20 +22,23 @@ public class PartidaService {
     @Autowired
     private CampeonatoService campeonatoService;
 
-    public Partida cadastrarPartida(Partida partida) {
+    public Partida cadastrarPartida(SalvarPartidaDTO salvarPartidaDTO) {
 
-        Time mandante = timeService.getTime(partida.getMandante().getId());
-        Time visitante = timeService.getTime(partida.getMandante().getId());
+        Time mandante = timeService.getTime(salvarPartidaDTO.getMandante());
+        Time visitante = timeService.getTime(salvarPartidaDTO.getVisitante());
 
-        if (mandante == null ||  visitante == null) {
-            throw new RuntimeException("Time na encotrado");
-        }
-
-        Campeonato campeonato =  campeonatoService.getCampeonato(partida.getCampeonato().getId());
+        Campeonato campeonato =  campeonatoService.getCampeonato(salvarPartidaDTO.getCampeonato());
 
         if (campeonato == null) {
             throw new RuntimeException("Campeonato na encotrado");
         }
+
+        Partida partida = new Partida();
+        partida.setCampeonato(campeonato);
+        partida.setMandante(mandante);
+        partida.setVisitante(visitante);
+        partida.setPlacarMandante(salvarPartidaDTO.getPlacarMandante());
+        partida.setPlacarVisitante(salvarPartidaDTO.getPlacarVisitante());
 
         return partidaRepository.save(partida);
 

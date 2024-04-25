@@ -3,8 +3,8 @@ package br.insper.loja.time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TimeService {
@@ -29,7 +29,11 @@ public class TimeService {
     }
 
     public Time getTime(Integer id) {
-        return timeRepository.getById(id);
+        Optional<Time> op = timeRepository.findById(id);
+        if (op.isPresent()){
+            return op.get();
+        }
+        throw new TimeNaoEncontradoException("Time " + id + " não encontrado");
     }
 
 }

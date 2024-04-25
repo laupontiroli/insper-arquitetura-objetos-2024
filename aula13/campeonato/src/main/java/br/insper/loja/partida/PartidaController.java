@@ -20,8 +20,8 @@ public class PartidaController {
 
     @PostMapping("/partida")
     @ResponseStatus(HttpStatus.CREATED)
-    public Partida salvarPartida(@RequestBody Partida compra) {
-        return partidaService.cadastrarPartida(compra);
+    public Partida salvarPartida(@RequestBody SalvarPartidaDTO partida) {
+        return partidaService.cadastrarPartida(partida);
     }
 
 }
