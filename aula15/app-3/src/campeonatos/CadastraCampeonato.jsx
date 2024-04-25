@@ -2,12 +2,10 @@ import { Fragment, useState } from "react"
 import { Button, IconButton, Snackbar } from '@mui/material';
 
 
-export function CadastraTime() {
+export function CadastraCampeonato() {
 
     const [nome, setNome] = useState()
     const [identificador, setIdentificador] = useState()
-    const [estado, setEstado] = useState()
-    const [estadio, setEstadio] = useState()
 
     const [open, setOpen] = useState(false)
 
@@ -23,25 +21,23 @@ export function CadastraTime() {
     function click() {
         let data = {
           'nome': nome,
-          'identificador': identificador,
-          'estado': estado,
-          'estadio': estadio
+          'identificador': identificador
         }
     
-        fetch('http://localhost:8080/time', {
+        fetch('http://localhost:8080/campeonato', {
           method: 'POST',
           body: JSON.stringify(data),
           headers: {
             'Content-Type': 'application/json'
           }
         }).then(response => {
-          if (!response.ok) {
+            if (!response.ok) {
             throw 'Error';
           }
           setOpen(true)
           //load()
         }).catch(response => {
-          alert('erro no cadastro do time!')
+          alert('erro no cadastro do campeonato!')
           alert(response.status)
         })
     }
@@ -52,9 +48,6 @@ export function CadastraTime() {
 
                 Nome: <input type='text' value={nome} onChange={e => setNome(e.target.value)} ></input><br></br>
                 Identificador: <input type='text' value={identificador} onChange={e => setIdentificador(e.target.value)}></input><br></br>
-                Estado: <input type='text' value={estado} onChange={e => setEstado(e.target.value)}></input><br></br>
-                Estádio: <input type='text' value={estadio} onChange={e => setEstadio(e.target.value)}></input><br></br>
-
                 <Button variant="outlined" onClick={() => click()}>Cadastrar</Button>
 
             </div>
@@ -62,9 +55,9 @@ export function CadastraTime() {
                 open={open}
                 autoHideDuration={6000}
                 onClose={handleClose}
-                message="Time cadastrado com sucesso!"
+                message="Campeonato cadastrado com sucesso!"
             ></Snackbar>
         </>
     )
 
-}
+}3

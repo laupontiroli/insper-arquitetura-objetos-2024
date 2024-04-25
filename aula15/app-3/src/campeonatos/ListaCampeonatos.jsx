@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 
-export function ListaTimes() {
+export function ListaCampeonatos() {
 
   const [data, setData] = useState([])
 
@@ -10,14 +10,14 @@ export function ListaTimes() {
   }, [])
 
   function load() {
-    fetch('http://localhost:8080/time', {
+    fetch('http://localhost:8080/campeonato', {
       method: 'GET'
     }).then(response => {
       return response.json()
     }).then(data => {
       setData(data)
     }).catch(response => {
-      alert('Erro ao listar times!')
+      alert('Erro ao listar campeonatos!')
       alert(response.status)
     })
   }
@@ -31,8 +31,6 @@ export function ListaTimes() {
                     <td>ID</td>
                     <td>Nome</td>
                     <td>Identificador</td>
-                    <td>Estado</td>
-                    <td>Estádio</td>
                     </tr>            
                     {
                     data.map((time, index) => {
@@ -40,8 +38,6 @@ export function ListaTimes() {
                         <td>{time.id}</td>
                         <td>{time.nome}</td>
                         <td>{time.identificador}</td>
-                        <td>{time.estado}</td>
-                        <td>{time.estadio}</td>
                         </tr>
                     })
 

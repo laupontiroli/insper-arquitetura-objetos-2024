@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+
+.menu {
+  position: fixed;
+  color:white;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #bdc5ff; /* Change this to your desired background color */
+  padding: 10px;
+  z-index: 999; /* Make sure the menu stays on top */
+}
+3
